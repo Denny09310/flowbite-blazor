@@ -31,8 +31,8 @@ public partial class Avatar
 
     private string? RenderedClass => new CssBuilder("w-10 h-10")
         .AddClass("ring-2 ring-gray-300 dark:ring-gray-500", Bordered)
-        .AddClass("relative w-10 h-10 overflow-hidden bg-gray-100 dark:bg-gray-600", HasPlaceholder)
-        .AddClass("relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 dark:bg-gray-600", HasInitials)
+        .AddClass("relative overflow-hidden bg-gray-100 dark:bg-gray-600", HasPlaceholder)
+        .AddClass("relative inline-flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-600", HasInitials)
         .AddClass(SelectRoundedVariant())
         .Build();
 
@@ -106,11 +106,10 @@ public partial class Avatar
 
     private string? SelectAnchorVariant() => Anchor switch
     {
-        Anchors.TopRight => "top-0 right-7",
         Anchors.BottomRight => "bottom-0 right-7",
         Anchors.TopLeft => "top-0 left-7",
         Anchors.BottomLeft => "bottom-0 left-7",
-        _ => throw new NotImplementedException(),
+        Anchors.TopRight or _ => "top-0 right-7",
     };
 
     private string? SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
