@@ -1,0 +1,40 @@
+@namespace Flowbite.Blazor.Components
+@inherits FlowbiteComponentBase
+
+<div class="@ContainerRenderedClass">
+
+    <div class="relative">
+       
+        @if (ShowIndicator)
+        {
+            <span class="@IndicatorRenderedClass"></span>
+        }
+
+        @if (HasInitials)
+        {
+            <div @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style">
+                <span class="font-medium text-gray-600 dark:text-gray-300">
+                    @Initials
+                </span>
+            </div>
+        }
+        else if (HasPlaceholder)
+        {
+            <div @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style">
+                @Placeholder
+            </div>
+        }
+        else
+        {
+            <img @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style" src="@Image" alt="@AlternativeText">
+        }
+
+    </div>
+
+    @if (HasTextFragment)
+    {
+        <div class="font-medium dark:text-white">
+            @(Text ?? ChildContent)
+        </div>
+    }
+</div>

@@ -1,0 +1,179 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void RendersDefaultAvatar()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar Image="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div>
+                <div class="relative">
+                    <img class="rounded w-10 h-10" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg">
+                </div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void RendersAvatarWithInitials()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar Initials="JD" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div>
+                <div class="relative">
+                    <div class="relative inline-flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-600 rounded w-10 h-10">
+                        <span class="font-medium text-gray-600 dark:text-gray-300">
+                            JD
+                        </span>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void RendersAvatarWithPlaceholder()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar>
+                <Placeholder>
+                    <span>👤</span>
+                </Placeholder>
+            </Avatar>
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div>
+                <div class="relative">
+                    <div class="relative overflow-hidden bg-gray-100 dark:bg-gray-600 rounded w-10 h-10">
+                        <span>👤</span>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void RendersAvatarWithIndicator()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar ShowIndicator="true" Image="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div>
+                <div class="relative">
+                    <span class="top-0 right-7 absolute bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                    <img class="rounded w-10 h-10" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg">
+                </div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void RendersAvatarWithBorder()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar Bordered="true" Image="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div>
+                <div class="relative">
+                    <img class="rounded w-10 h-10 ring-2 ring-gray-300 dark:ring-gray-500" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg">
+                </div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void RendersAvatarWithTextFragment()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar>
+                <Text>
+                    <span>John Doe</span>
+                </Text>
+            </Avatar>
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div class="flex items-center gap-4">
+                <div class="relative">
+                    <img class="rounded w-10 h-10">
+                </div>
+                <div class="font-medium dark:text-white">
+                    <span>John Doe</span>
+                </div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void RendersAvatarWithChildContent()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar>
+                <ChildContent>
+                    <span>Custom Content</span>
+                </ChildContent>
+            </Avatar>
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div class="flex items-center gap-4">
+                <div class="relative">
+                    <img class="rounded w-10 h-10">
+                </div>
+                <div class="font-medium dark:text-white">
+                    <span>Custom Content</span>
+                </div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void RendersAvatarWithLargeSize()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar Size="Sizes.Large">
+                <ChildContent>
+                    <span>Custom Content</span>
+                </ChildContent>
+            </Avatar>
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div class="flex items-center gap-4">
+                <div class="relative">
+                    <img class="rounded w-20 h-20">
+                </div>
+                <div class="font-medium dark:text-white">
+                    <span>Custom Content</span>
+                </div>
+            </div>
+        );
+    }
+}
