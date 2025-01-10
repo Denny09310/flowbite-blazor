@@ -23,10 +23,10 @@ public partial class Alert : FlowbiteComponentBase
         .Build();
 
     private string? RenderedClass => new CssBuilder("flex p-4 mb-4 text-sm")
-        .AddClass(SelectVariant())
         .AddClass("rounded-lg", Rounded)
-        .AddClass(RenderedBorderClass)
         .AddClass(Class)
+        .AddClass(RenderedBorderClass, BorderAccent)
+        .AddClass(SelectVariant())
         .Build();
 
     private string? RenderedCloseClass => new CssBuilder("ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8")
