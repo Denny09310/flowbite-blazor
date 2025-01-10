@@ -37,7 +37,7 @@ public partial class AccordionItem : FlowbiteComponentBase
     /// Gets the CSS class to apply to the icon based on the expanded state of the accordion item. 
     /// If the item is expanded, the icon is rotated by 180 degrees.
     /// </summary>
-    private string? RenderedIconClass => new CssBuilder("w-3 h-3")
+    private string? RenderedIconClass => new CssBuilder("w-3 h-3 shrink-0")
         .AddClass("rotate-180", Expanded)
         .Build();
 
