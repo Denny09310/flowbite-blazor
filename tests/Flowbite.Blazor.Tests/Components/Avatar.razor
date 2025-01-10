@@ -151,4 +151,29 @@
             </div>
         );
     }
+
+    [Fact]
+    public void RendersAvatarWithLargeSize()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Avatar Size="Sizes.Large">
+                <ChildContent>
+                    <span>Custom Content</span>
+                </ChildContent>
+            </Avatar>
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div class="flex items-center gap-4">
+                <div class="relative">
+                    <img class="rounded w-20 h-20">
+                </div>
+                <div class="font-medium dark:text-white">
+                    <span>Custom Content</span>
+                </div>
+            </div>
+        );
+    }
 }

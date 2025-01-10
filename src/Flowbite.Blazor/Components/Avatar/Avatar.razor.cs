@@ -29,11 +29,12 @@ public partial class Avatar
         .AddClass(SelectAnchorVariant())
         .Build();
 
-    private string? RenderedClass => new CssBuilder("w-10 h-10")
+    private string? RenderedClass => new CssBuilder()
         .AddClass("ring-2 ring-gray-300 dark:ring-gray-500", Bordered)
         .AddClass("relative overflow-hidden bg-gray-100 dark:bg-gray-600", HasPlaceholder)
         .AddClass("relative inline-flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-600", HasInitials)
         .AddClass(SelectRoundedVariant())
+        .AddClass(SelectSizeVariant())
         .Build();
 
     #region Parameters
@@ -86,6 +87,12 @@ public partial class Avatar
     [Parameter]
     public bool ShowIndicator { get; set; }
 
+    /// <summary>
+    /// Gets or sets the size of the avatar.
+    /// </summary>
+    [Parameter]
+    public Sizes Size { get; set; }
+
     #endregion Parameters
 
     #region Fragments
@@ -113,4 +120,13 @@ public partial class Avatar
     };
 
     private string? SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
+
+    private string? SelectSizeVariant() => Size switch
+    {
+        Sizes.ExtraSmall => "w-6 h-6",
+        Sizes.Small => "w-8 h-8",
+        Sizes.Large => "w-20 h-20",
+        Sizes.ExtraLarge => "w-36 h-36",
+        Sizes.None or Sizes.Medium or _ => "w-10 h-10",
+    };
 }
