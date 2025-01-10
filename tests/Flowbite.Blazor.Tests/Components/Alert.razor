@@ -11,6 +11,20 @@
 
         // Assert
         cut.MarkupMatches(
+            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 flex p-4 mb-4 text-sm" role="alert"></div>
+        );
+    }
+
+    [Fact]
+    public void RendersAlertWithBorder()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Alert Id="alert-id" Bordered />
+        );
+
+        // Assert
+        cut.MarkupMatches(
             @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 border-gray-500 border-t-4 flex p-4 mb-4 text-sm" role="alert"></div>
         );
     }
@@ -27,7 +41,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 border-gray-500 border-t-4 flex p-4 mb-4 text-sm" role="alert">
+            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 flex p-4 mb-4 text-sm" role="alert">
                 <p>This is an alert</p>
             </div>
         );
@@ -43,7 +57,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 border-gray-500 border-t-4 flex p-4 mb-4 text-sm" role="alert">
+            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 flex p-4 mb-4 text-sm" role="alert">
                 <span class="sr-only">Info</span>
                 <Info Class="flex-shrink-0 mr-3 inline h-5 w-5" />
             </div>
@@ -60,7 +74,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 border-gray-500 border-t-4 flex p-4 mb-4 text-sm" role="alert">
+            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 flex p-4 mb-4 text-sm" role="alert">
                 <button type="button" class="text-gray-700 bg-gray-100 dark:bg-gray-200 dark:text-gray-800 ml-auto rounded-lg focus:ring-2 inline-flex items-center justify-center h-8 w-8" aria-label="Close" data-dismiss-target="#alert-id">
                     <span class="sr-only">Close</span>
                     <Close />
@@ -83,7 +97,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 border-gray-500 border-t-4 flex p-4 mb-4 text-sm" role="alert">
+            @<div id="alert-id" class="bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300 flex p-4 mb-4 text-sm" role="alert">
                 <div class="flex">
                     <button>Retry</button>
                 </div>
@@ -101,7 +115,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<div id="alert-id" class="bg-red-100 text-red-500 focus:ring-red-400 hover:bg-red-200 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300 border-red-500 border-t-4 flex p-4 mb-4 text-sm" role="alert"></div>
+            @<div id="alert-id" class="bg-red-100 text-red-500 focus:ring-red-400 hover:bg-red-200 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300 flex p-4 mb-4 text-sm" role="alert"></div>
         );
     }
 }

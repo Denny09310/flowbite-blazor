@@ -25,7 +25,7 @@ public partial class Alert : FlowbiteComponentBase
     private string? RenderedClass => new CssBuilder("flex p-4 mb-4 text-sm")
         .AddClass("rounded-lg", Rounded)
         .AddClass(Class)
-        .AddClass(RenderedBorderClass, BorderAccent)
+        .AddClass(RenderedBorderClass, Bordered)
         .AddClass(SelectVariant())
         .Build();
 
@@ -39,7 +39,7 @@ public partial class Alert : FlowbiteComponentBase
     /// Gets or sets a value indicating whether the alert should have a border accent.
     /// </summary>
     [Parameter]
-    public bool BorderAccent { get; set; }
+    public bool Bordered { get; set; }
 
     /// <summary>
     /// Gets or sets the color of the alert.
