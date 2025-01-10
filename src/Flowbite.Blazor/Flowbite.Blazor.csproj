@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -13,16 +13,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)'!='DEBUG'">
-    <Exec Command="npx tailwindcss -i ./wwwroot/entrypoint.css -o ./wwwroot/css/app.css --watch" />
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'DEBUG'">
+    <Exec Command="npx tailwindcss -i wwwroot/css/entrypoint.css -o wwwroot/Flowbite.Blazor.styles.css --watch" />
   </Target>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)'!='RELEASE'">
-    <Exec Command="npx tailwindcss -i ./wwwroot/entrypoint.css -o ./wwwroot/css/app.css --minify" />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'RELEASE'">
+    <Exec Command=" npx tailwindcss -i wwwroot/css/entrypoint.css -o wwwroot/Flowbite.Blazor.styles.css --minify" />
   </Target>
 
 </Project>
