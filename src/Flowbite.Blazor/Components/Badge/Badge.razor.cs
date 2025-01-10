@@ -21,6 +21,7 @@ public partial class Badge : FlowbiteComponentBase
 
     private string? RenderedClass => new CssBuilder("font-medium px-2.5 py-0.5")
         .AddClass(RenderedBorderClass, Bordered)
+        .AddClass(Class)
         .AddClass(SelectVariant())
         .AddClass(SelectSizeVariant())
         .AddClass(SelectRoundedVariant())
