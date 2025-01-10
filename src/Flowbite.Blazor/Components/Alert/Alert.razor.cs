@@ -23,10 +23,10 @@ public partial class Alert : FlowbiteComponentBase
         .Build();
 
     private string? RenderedClass => new CssBuilder("flex p-4 mb-4 text-sm")
-        .AddClass(SelectVariant())
         .AddClass("rounded-lg", Rounded)
-        .AddClass(RenderedBorderClass)
         .AddClass(Class)
+        .AddClass(RenderedBorderClass, Bordered)
+        .AddClass(SelectVariant())
         .Build();
 
     private string? RenderedCloseClass => new CssBuilder("ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8")
@@ -39,7 +39,7 @@ public partial class Alert : FlowbiteComponentBase
     /// Gets or sets a value indicating whether the alert should have a border accent.
     /// </summary>
     [Parameter]
-    public bool BorderAccent { get; set; }
+    public bool Bordered { get; set; }
 
     /// <summary>
     /// Gets or sets the color of the alert.
