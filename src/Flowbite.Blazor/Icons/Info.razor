@@ -10,7 +10,7 @@
 @code
 {
     protected override string? RenderedClass => new CssBuilder()
-        .AddClass(base.RenderedClass)
         .AddClass(Class)
+        .AddClass(base.RenderedClass)
         .Build();
 }

@@ -20,10 +20,10 @@ public partial class FlowbiteIcon : FlowbiteComponentBase
 
     private string? SelectSizeVariant() => Size switch
     {
-        Sizes.Medium => "w-10 h-10",
-        Sizes.Small => "w-8 h-8",
-        Sizes.Large => "w-20 h-20",
-        Sizes.ExtraLarge => "w-36 h-36",
-        Sizes.None or Sizes.ExtraSmall or _ => "w-6 h-6",
+        Sizes.Small => "w-6 h-6",
+        Sizes.Medium => "w-8 h-8",
+        Sizes.Large => "w-12 h-12",
+        Sizes.ExtraLarge => "w-16 h-16",
+        Sizes.None or Sizes.ExtraSmall or _ => "w-4 h-4",
     };
 }
