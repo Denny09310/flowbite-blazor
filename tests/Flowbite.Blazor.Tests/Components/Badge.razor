@@ -1,0 +1,120 @@
+@inherits TestContext
+
+@code 
+{
+    [Fact]
+    public void RendersDefaultBadge()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Badge Text="Default Badge" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded font-medium me-2">
+                Default Badge
+            </span>
+        );
+    }
+
+    [Fact]
+    public void RendersBadgeWithColor()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Badge Text="Colored Badge" Color="Colors.Blue" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 text-xs rounded font-medium me-2">
+                Colored Badge
+            </span>
+        );
+    }
+
+    [Fact]
+    public void RendersBadgeWithSize()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Badge Text="Large Badge" Size="Sizes.Large" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-lg rounded font-medium me-2">
+                Large Badge
+            </span>
+        );
+    }
+
+    [Fact]
+    public void RendersBadgeWithBorder()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Badge Text="Bordered Badge" Bordered="true" Color="Colors.Green" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<span class="border-green-500 border bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 text-xs rounded font-medium me-2">
+                Bordered Badge
+            </span>
+        );
+    }
+
+    [Fact]
+    public void RendersBadgeWithRoundedCorners()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Badge Text="Rounded Badge" Rounded="true" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded-full font-medium me-2">
+                Rounded Badge
+            </span>
+        );
+    }
+
+    [Fact]
+    public void RendersBadgeWithHref()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Badge Text="Clickable Badge" Href="https://example.com" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<a class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded font-medium me-2" href="https://example.com">
+                Clickable Badge
+            </a>
+        );
+    }
+
+    [Fact]
+    public void RendersBadgeWithChildContent()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Badge>
+                <ChildContent>
+                    <span>Custom Content</span>
+                </ChildContent>
+            </Badge>
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded font-medium me-2">
+                <span>Custom Content</span>
+            </span>
+        );
+    }
+}
