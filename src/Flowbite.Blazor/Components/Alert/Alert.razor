@@ -1,0 +1,27 @@
+﻿@namespace Flowbite.Blazor.Components
+@inherits FlowbiteComponentBase
+
+<div @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style" role="alert">
+    @if (ShowIcon)
+    {
+        <span class="sr-only">Info</span>
+        <Info Class="flex-shrink-0 mr-3 inline h-5 w-5" />
+    }
+
+    @ChildContent
+
+    @if (Actions is not null)
+    {
+        <div class="flex">
+            @Actions
+        </div>
+    }
+
+    @if (Dismissable)
+    {
+        <button type="button" class="@RenderedCloseClass" aria-label="Close" data-dismiss-target="@DataDismissTarget">
+            <span class="sr-only">Close</span>
+            <Close />
+        </button>
+    }
+</div>
