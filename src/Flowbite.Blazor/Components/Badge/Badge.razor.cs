@@ -1,4 +1,5 @@
 using Flowbite.Blazor.Enums;
+using Flowbite.Blazor.Icons;
 using Flowbite.Blazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
@@ -15,6 +16,8 @@ namespace Flowbite.Blazor.Components;
 /// </remarks>
 public partial class Badge : FlowbiteComponentBase
 {
+    public Badge() => Id ??= $"badge-{Identifier.NewId()}";
+
     private string? RenderedBorderClass => new CssBuilder("border")
        .AddClass(SelectBorderVariant())
        .Build();
@@ -25,6 +28,10 @@ public partial class Badge : FlowbiteComponentBase
         .AddClass(SelectVariant())
         .AddClass(SelectSizeVariant())
         .AddClass(SelectRoundedVariant())
+        .Build();
+
+    private string? RenderedCloseClass => new CssBuilder("inline-flex items-center p-1 ms-2 bg-transparent rounded-sm")
+        .AddClass(SelecteCloseVariant())
         .Build();
 
     private RenderFragment Tag => builder =>
@@ -51,6 +58,26 @@ public partial class Badge : FlowbiteComponentBase
             builder.AddContent(7, ChildContent);
         }
 
+        if (Dismissable)
+        {
+            builder.OpenElement(0, "button");
+            builder.AddAttribute(1, "type", "button");
+            builder.AddAttribute(2, "class", RenderedCloseClass);
+            builder.AddAttribute(3, "aria-label", "Close");
+            builder.AddAttribute(4, "data-dismiss-target", $"#{Id}");
+
+            builder.OpenElement(5, "span");
+            builder.AddAttribute(6, "class", "sr-only");
+            builder.AddContent(7, "Close");
+            builder.CloseElement();
+
+            builder.OpenComponent<Close>(8);
+            builder.AddComponentParameter(9, nameof(Size), Sizes.ExtraSmall);
+            builder.CloseComponent();
+
+            builder.CloseElement();
+        }
+
         builder.CloseElement();
     };
 
@@ -67,6 +94,12 @@ public partial class Badge : FlowbiteComponentBase
     /// </summary>
     [Parameter]
     public Colors Color { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the alert is dismissable.
+    /// </summary>
+    [Parameter]
+    public bool Dismissable { get; set; }
 
     /// <summary>
     /// Gets or sets the hyperlink reference (URL) for the component.
@@ -114,6 +147,19 @@ public partial class Badge : FlowbiteComponentBase
         Colors.Indigo => "border-indigo-500",
         Colors.Purple => "border-purple-500",
         Colors.Pink => "border-pink-500",
+        _ => throw new NotImplementedException(),
+    };
+
+    private string? SelecteCloseVariant() => Color switch
+    {
+        Colors.Gray => "text-gray-700 dark:text-gray-800",
+        Colors.Red => "text-red-700 dark:text-red-800",
+        Colors.Yellow => "text-yellow-700 dark:text-yellow-800",
+        Colors.Green => "text-green-700 dark:text-green-800",
+        Colors.Blue => "text-blue-700 dark:text-blue-800",
+        Colors.Indigo => "text-indigo-700 dark:text-indigo-800",
+        Colors.Purple => "text-purple-700 dark:text-purple-800",
+        Colors.Pink => "text-pink-700 dark:text-pink-800",
         _ => throw new NotImplementedException(),
     };
 
