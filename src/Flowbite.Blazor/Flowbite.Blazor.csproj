@@ -22,11 +22,11 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'DEBUG'">
-    <Exec Command="npx tailwindcss -i wwwroot/css/entrypoint.css -o wwwroot/Flowbite.Blazor.styles.css --watch" />
+    <Exec Command="npx tailwindcss -i wwwroot/css/entrypoint.css -o wwwroot/Flowbite.Blazor.css --watch" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'RELEASE'">
-    <Exec Command=" npx tailwindcss -i wwwroot/css/entrypoint.css -o wwwroot/Flowbite.Blazor.styles.css --minify" />
+    <Exec Command=" npx tailwindcss -i wwwroot/css/entrypoint.css -o wwwroot/Flowbite.Blazor.css --minify" />
   </Target>
 
 </Project>
