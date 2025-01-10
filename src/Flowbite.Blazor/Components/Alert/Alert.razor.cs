@@ -83,18 +83,6 @@ public partial class Alert : FlowbiteComponentBase
 
     #endregion Fragments
 
-    #region Events
-
-    /// <summary>
-    /// Gets or sets the callback to be invoked when the alert is dismissed.
-    /// </summary>
-    [Parameter]
-    public EventCallback OnDismissed { get; set; }
-
-    #endregion Events
-
-    #region Selectors
-
     private string? SelectBorderVariant() => Color switch
     {
         Colors.Gray => "border-gray-500",
@@ -133,6 +121,4 @@ public partial class Alert : FlowbiteComponentBase
         Colors.Pink => "bg-pink-100 text-pink-500 focus:ring-pink-400 hover:bg-pink-200 dark:bg-pink-200 dark:text-pink-600 dark:hover:bg-pink-300",
         _ => throw new NotImplementedException()
     };
-
-    #endregion Selectors
 }
