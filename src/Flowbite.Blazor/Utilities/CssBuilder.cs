@@ -92,10 +92,10 @@ public readonly partial struct CssBuilder
     public override string? ToString() => Build();
 
     /// <summary>
-    /// Generates the regex used to validate CSS class names.
+    /// Generates the regex used to validate CSS class names, including Tailwind CSS variants`.
     /// </summary>
     /// <returns>A compiled regex for validating CSS class names</returns>
-    [GeneratedRegex(@"^-?[_a-zA-Z]+[_a-zA-Z0-9-]*$", RegexOptions.Compiled)]
+    [GeneratedRegex(@"^(?:[a-zA-Z]+:)*-?[_a-zA-Z]+[_a-zA-Z0-9-]*(?:\[[^\]]+\])?$", RegexOptions.Compiled)]
     private static partial Regex GenerateValidClassNameRegex();
 
     /// <summary>
