@@ -1,10 +1,13 @@
-@inherits FlowbiteComponentBase
+@inherits FlowbiteIcon
 
-<svg @attributes="AdditionalAttributes" class="@RenderedClass shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+<svg @attributes="AdditionalAttributes" class="@RenderedClass" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
 </svg>
 
 @code
 {
-    private string RenderedClass => Class ?? "w-5 h-5";
+    protected override string? RenderedClass => new CssBuilder()
+        .AddClass(base.RenderedClass)
+        .AddClass(Class)
+        .Build();
 }
