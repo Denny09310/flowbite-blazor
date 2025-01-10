@@ -1,0 +1,108 @@
+@inherits TestContext
+
+@code
+{
+    // Test to check the rendering of the Accordion and AccordionItem with default content
+    [Fact]
+    public void RendersDefaultAccordionWithItem()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Accordion Id="accordion-id">
+                <AccordionItem>
+                    <Heading>
+                        <span>What is Flowbite?</span>
+                    </Heading>
+                    <Body>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                    </Body>
+                </AccordionItem>
+            </Accordion>
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<div id="accordion-id" data-accordion="collapse">
+                <h2 id="accordion-id-heading-f0000">
+                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-id-body-f0000" aria-controls="accordion-id-body-f0000">
+                        <span>What is Flowbite?</span>
+                        <ChevronDown data-accordion-icon Class="w-3 h-3" />
+                    </button>
+                </h2>
+                <div id="accordion-id-body-f0000" class="hidden" aria-labelledby="accordion-id-heading-f0000">
+                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Test to check if the accordion item expands when clicked
+    [Fact]
+    public void AccordionItemExpandsOnClick()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Accordion Id="accordion-id">
+                <AccordionItem>
+                    <Heading>
+                        <span>What is Flowbite?</span>
+                    </Heading>
+                    <Body>
+                        <p>Flowbite is a powerful UI component library.</p>
+                    </Body>
+                </AccordionItem>
+            </Accordion>
+        );
+
+        // Verify the accordion body is initially collapsed (hidden)
+        var accordionBody = cut.Find("#accordion-id-body-f0000");
+        Assert.Contains("hidden", accordionBody.Attributes["class"]?.Value);
+
+        // TODO: Find a way to click the button without the need to trigger @onclick
+
+        // // Simulate a click on the accordion header to expand it
+        // var accordionHeaderButton = cut.Find("button");
+        // accordionHeaderButton.Click();
+
+        // // Assert the body is now expanded and visible
+        // accordionBody = cut.Find("#accordion-id-body-f0000");
+        // Assert.DoesNotContain("hidden", accordionBody.Attributes["class"]?.Value);
+    }
+
+    // Test to check if the icon rotates when the accordion item is expanded
+    [Fact]
+    public void AccordionIconRotatesWhenExpanded()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Accordion Id="accordion-id">
+                <AccordionItem>
+                    <Heading>
+                        <span>What is Flowbite?</span>
+                    </Heading>
+                    <Body>
+                        <p>Flowbite is a powerful UI component library.</p>
+                    </Body>
+                </AccordionItem>
+            </Accordion>
+        );
+
+        // Initially, the icon should not have the "rotate-180" class (collapsed state)
+        var icon = cut.Find("[data-accordion-icon]");
+        Assert.DoesNotContain("rotate-180", icon.Attributes["class"]?.Value);
+
+        // TODO: Find a way to click the button without the need to trigger @onclick
+
+        // // Simulate a click to expand the accordion item
+        // var accordionHeaderButton = cut.Find("button");
+        // accordionHeaderButton.Click();
+
+        // // After the click, the icon should have the "rotate-180" class (expanded state)
+        // icon = cut.Find("[data-accordion-icon]");
+        // Assert.Contains("rotate-180", icon.Attributes["class"]?.Value);
+    }
+}

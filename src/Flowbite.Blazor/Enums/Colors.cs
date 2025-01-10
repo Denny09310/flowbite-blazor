@@ -1,6 +1,6 @@
 ﻿namespace Flowbite.Blazor.Enums;
 
-public enum FlowbiteColors
+public enum Colors
 {
     Gray,
     Red,
