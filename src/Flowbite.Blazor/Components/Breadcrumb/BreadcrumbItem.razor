@@ -1,14 +1,20 @@
-@namespace Flowbite.Blazor.Components
+﻿@namespace Flowbite.Blazor.Components
 @inherits FlowbiteComponentBase
 
-<li @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style">
-    <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-        @ChildContent
+<li aria-current="@(IsLast ? "page" : null)">
+
+    <div @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style">
         
-        @if (!ShowIcon || IsLast)
+        @if (ShowIcon && !IsFirst)
         {
-            <ChevronRight Class="w-3 h-3 me-2.5" />
+            <ChevronRight Class="mx-1 h-3 w-3 text-gray-400 rtl:rotate-180" />
         }
-    </a>
+
+        <DynamicElement As="@Tag" href="@Href" class="@RenderedContentClass">
+            @ChildContent
+        </DynamicElement>
+
+    </div>
+
 </li>
 
