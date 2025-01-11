@@ -25,10 +25,10 @@ public partial class Badge : FlowbiteComponentBase
 
     private string? RenderedClass => new CssBuilder("font-medium px-2.5 py-0.5")
         .AddClass(RenderedBorderClass, Bordered)
+        .AddClass(Rounded ? "rounded-full" : "rounded")
         .AddClass(Class)
         .AddClass(SelectVariant())
-        .AddClass(SelectSizeVariant())
-        .AddClass(SelectRoundedVariant())
+        .AddClass(SelectSize())
         .Build();
 
     private string? RenderedCloseClass => new CssBuilder("inline-flex items-center p-1 ms-2 bg-transparent rounded-sm")
@@ -117,15 +117,13 @@ public partial class Badge : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
-
-    private string SelectSizeVariant() => Size switch
+    private string SelectSize() => Size switch
     {
         Sizes.Small => "text-sm",
         Sizes.Medium => "text-md",
         Sizes.Large => "text-lg",
         Sizes.ExtraLarge => "text-xl",
-        Sizes.None or Sizes.ExtraSmall or _ => "text-xs",
+        _ => "text-xs",
     };
 
     private string SelectVariant() => Color switch

@@ -1,0 +1,31 @@
+.static {
+  position: static
+}
+
+.me-2 {
+  margin-inline-end: 0.5rem
+}
+
+.flex {
+  display: flex
+}
+
+.min-h-screen {
+  min-height: 100vh
+}
+
+.flex-col {
+  flex-direction: column
+}
+
+.items-center {
+  align-items: center
+}
+
+.justify-center {
+  justify-content: center
+}
+
+.gap-4 {
+  gap: 1rem
+}

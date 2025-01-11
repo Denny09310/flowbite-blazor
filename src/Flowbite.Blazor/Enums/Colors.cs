@@ -44,4 +44,19 @@ public enum Colors
     /// A pink color.
     /// </summary>
     Pink = 7,
+
+    /// <summary>
+    /// An alternative color.
+    /// </summary>
+    Alternative = 8,
+
+    /// <summary>
+    /// A dark color.
+    /// </summary>
+    Dark = 9,
+
+    /// <summary>
+    /// A light color.
+    /// </summary>
+    Light = 10,
 }

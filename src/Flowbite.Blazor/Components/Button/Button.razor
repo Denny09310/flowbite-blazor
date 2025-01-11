@@ -1,0 +1,30 @@
+﻿@namespace Flowbite.Blazor.Components
+@inherits FlowbiteComponentBase
+
+<button @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style">
+
+    @if (Loading)
+    {
+        @if (Loader != null)
+        {
+            @Loader
+        }
+        else
+        {
+            <Loader Size="@Size" Class="me-3 inline" />
+        }
+    }
+
+    @if (!Loading && IconAtStart)
+    {
+        @Icon
+    }
+
+    @ChildContent
+
+    @if (!Loading && IconAtEnd)
+    {
+        @Icon
+    }
+
+</button>

@@ -33,8 +33,8 @@ public partial class Avatar
         .AddClass("ring-2 ring-gray-300 dark:ring-gray-500", Bordered)
         .AddClass("relative overflow-hidden bg-gray-100 dark:bg-gray-600", HasPlaceholder)
         .AddClass("relative inline-flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-600", HasInitials)
-        .AddClass(SelectRoundedVariant())
-        .AddClass(SelectSizeVariant())
+        .AddClass(Rounded ? "rounded-full" : "rounded")
+        .AddClass(SelectSize())
         .Build();
 
     #region Parameters
@@ -119,14 +119,12 @@ public partial class Avatar
         Anchors.TopRight or _ => "top-0 right-7",
     };
 
-    private string SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
-
-    private string SelectSizeVariant() => Size switch
+    private string SelectSize() => Size switch
     {
         Sizes.ExtraSmall => "w-6 h-6",
         Sizes.Small => "w-8 h-8",
         Sizes.Large => "w-20 h-20",
         Sizes.ExtraLarge => "w-36 h-36",
-        Sizes.None or Sizes.Medium or _ => "w-10 h-10",
+        _ => "w-10 h-10",
     };
 }
