@@ -16,8 +16,6 @@ public partial class Alert : FlowbiteComponentBase
 {
     public Alert() => Id ??= $"alert-{Identifier.NewId()}";
 
-    private string DataDismissTarget => $"#{Id}";
-
     private string? RenderedBorderClass => new CssBuilder("border-t-4")
         .AddClass(SelectBorderVariant())
         .Build();

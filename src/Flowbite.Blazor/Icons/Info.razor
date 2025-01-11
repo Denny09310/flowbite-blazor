@@ -1,4 +1,4 @@
-@inherits FlowbiteComponentBase;
+@inherits FlowbiteIcon
 
 <svg @attributes="AdditionalAttributes" aria-hidden="true" class="@RenderedClass" style="@Style" fill="currentColor"
      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -9,5 +9,8 @@
 
 @code
 {
-    protected string RenderedClass => Class ?? "w-5 h-5";
+    protected override string? RenderedClass => new CssBuilder()
+        .AddClass(Class)
+        .AddClass(base.RenderedClass)
+        .Build();
 }
