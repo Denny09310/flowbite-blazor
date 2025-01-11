@@ -91,7 +91,7 @@ public partial class Badge : FlowbiteComponentBase
 
     #endregion Fragments
 
-    private string? SelectBorderVariant() => Color switch
+    private string SelectBorderVariant() => Color switch
     {
         Colors.Gray => "border-gray-500",
         Colors.Red => "border-red-500",
@@ -104,7 +104,7 @@ public partial class Badge : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string? SelecteCloseVariant() => Color switch
+    private string SelecteCloseVariant() => Color switch
     {
         Colors.Gray => "text-gray-700 dark:text-gray-800",
         Colors.Red => "text-red-700 dark:text-red-800",
@@ -117,9 +117,9 @@ public partial class Badge : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string? SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
+    private string SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
 
-    private string? SelectSizeVariant() => Size switch
+    private string SelectSizeVariant() => Size switch
     {
         Sizes.Small => "text-sm",
         Sizes.Medium => "text-md",
@@ -128,7 +128,7 @@ public partial class Badge : FlowbiteComponentBase
         Sizes.None or Sizes.ExtraSmall or _ => "text-xs",
     };
 
-    private string? SelectVariant() => Color switch
+    private string SelectVariant() => Color switch
     {
         Colors.Gray => "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300",
         Colors.Red => "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",

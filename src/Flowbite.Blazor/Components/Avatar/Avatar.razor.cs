@@ -111,7 +111,7 @@ public partial class Avatar
 
     #endregion Fragments
 
-    private string? SelectAnchorVariant() => Anchor switch
+    private string SelectAnchorVariant() => Anchor switch
     {
         Anchors.BottomRight => "bottom-0 right-7",
         Anchors.TopLeft => "top-0 left-7",
@@ -119,9 +119,9 @@ public partial class Avatar
         Anchors.TopRight or _ => "top-0 right-7",
     };
 
-    private string? SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
+    private string SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
 
-    private string? SelectSizeVariant() => Size switch
+    private string SelectSizeVariant() => Size switch
     {
         Sizes.ExtraSmall => "w-6 h-6",
         Sizes.Small => "w-8 h-8",

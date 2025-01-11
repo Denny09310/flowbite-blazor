@@ -81,7 +81,7 @@ public partial class Alert : FlowbiteComponentBase
 
     #endregion Fragments
 
-    private string? SelectBorderVariant() => Color switch
+    private string SelectBorderVariant() => Color switch
     {
         Colors.Gray => "border-gray-500",
         Colors.Red => "border-red-500",
@@ -94,7 +94,7 @@ public partial class Alert : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string? SelecteCloseVariant() => Color switch
+    private string SelecteCloseVariant() => Color switch
     {
         Colors.Gray => "text-gray-700 bg-gray-100 dark:bg-gray-200 dark:text-gray-800",
         Colors.Red => "text-red-700 bg-red-100 dark:bg-red-200 dark:text-red-800",
@@ -107,7 +107,7 @@ public partial class Alert : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string? SelectVariant() => Color switch
+    private string SelectVariant() => Color switch
     {
         Colors.Gray => "bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-600 dark:hover:bg-gray-300",
         Colors.Red => "bg-red-100 text-red-500 focus:ring-red-400 hover:bg-red-200 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300",
