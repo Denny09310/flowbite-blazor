@@ -1,4 +1,23 @@
 @namespace Flowbite.Blazor.Components
 @inherits FlowbiteComponentBase
 
-@Tag
+<DynamicElement @attributes="AdditionalAttributes" As="@Tag" href="@Href" id="@Id" class="@RenderedClass" style="@Style">
+
+    @if (!string.IsNullOrEmpty(Text))
+    {
+        @Text
+    }
+    else
+    {
+        @ChildContent
+    }
+
+    @if (Dismissable)
+    {
+        <button type="button" class="@RenderedCloseClass" aria-label="close" data-dismiss-target="#@Id">
+            <span class="sr-only">Close</span>
+            <Close Size="Sizes.ExtraSmall" />
+        </button>
+    }
+
+</DynamicElement>

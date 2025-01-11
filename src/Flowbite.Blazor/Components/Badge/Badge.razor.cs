@@ -1,5 +1,4 @@
 using Flowbite.Blazor.Enums;
-using Flowbite.Blazor.Icons;
 using Flowbite.Blazor.Utilities;
 using Microsoft.AspNetCore.Components;
 
@@ -18,6 +17,8 @@ public partial class Badge : FlowbiteComponentBase
 {
     public Badge() => Id ??= $"badge-{Identifier.NewId()}";
 
+    private string Tag => Href == null ? "span" : "a";
+
     private string? RenderedBorderClass => new CssBuilder("border")
        .AddClass(SelectBorderVariant())
        .Build();
@@ -33,53 +34,6 @@ public partial class Badge : FlowbiteComponentBase
     private string? RenderedCloseClass => new CssBuilder("inline-flex items-center p-1 ms-2 bg-transparent rounded-sm")
         .AddClass(SelecteCloseVariant())
         .Build();
-
-    private RenderFragment Tag => builder =>
-    {
-        var tagName = !string.IsNullOrWhiteSpace(Href) ? "a" : "span";
-
-        builder.OpenElement(0, tagName);
-        builder.AddMultipleAttributes(1, AdditionalAttributes);
-        builder.AddAttribute(2, "id", Id);
-        builder.AddAttribute(3, "class", RenderedClass);
-        builder.AddAttribute(4, "style", Style);
-
-        if (!string.IsNullOrWhiteSpace(Href))
-        {
-            builder.AddAttribute(5, "href", Href);
-        }
-
-        if (!string.IsNullOrWhiteSpace(Text))
-        {
-            builder.AddContent(6, Text);
-        }
-        else
-        {
-            builder.AddContent(7, ChildContent);
-        }
-
-        if (Dismissable)
-        {
-            builder.OpenElement(0, "button");
-            builder.AddAttribute(1, "type", "button");
-            builder.AddAttribute(2, "class", RenderedCloseClass);
-            builder.AddAttribute(3, "aria-label", "Close");
-            builder.AddAttribute(4, "data-dismiss-target", $"#{Id}");
-
-            builder.OpenElement(5, "span");
-            builder.AddAttribute(6, "class", "sr-only");
-            builder.AddContent(7, "Close");
-            builder.CloseElement();
-
-            builder.OpenComponent<Close>(8);
-            builder.AddComponentParameter(9, nameof(Size), Sizes.ExtraSmall);
-            builder.CloseComponent();
-
-            builder.CloseElement();
-        }
-
-        builder.CloseElement();
-    };
 
     #region Parameters
 
