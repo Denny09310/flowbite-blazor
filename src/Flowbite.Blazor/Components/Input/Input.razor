@@ -1,0 +1,32 @@
+﻿@namespace Flowbite.Blazor.Components
+@inherits FlowbiteInputBase<TValue>
+@typeparam TValue
+
+<div>
+    
+    @if (!string.IsNullOrEmpty(Label))
+    {
+        <label for="@Id" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+            @Label
+        </label>
+    }
+
+    <div class="relative">
+
+        @if (Start != null)
+        {
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5">
+                @Start
+            </div>
+        }
+
+        <input @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style" />
+
+        @if (End != null)
+        {
+            <div class="absolute inset-y-0 end-0 flex items-center pe-3.5">
+                @End
+            </div>
+        }
+    </div>
+</div>

@@ -6,9 +6,9 @@
 public enum Colors
 {
     /// <summary>
-    /// A gray color.
+    /// A blue color.
     /// </summary>
-    Gray = 0,
+    Blue = 0,
 
     /// <summary>
     /// A red color.
@@ -26,9 +26,9 @@ public enum Colors
     Green = 3,
 
     /// <summary>
-    /// A blue color.
+    /// A gray color.
     /// </summary>
-    Blue = 4,
+    Gray = 4,
 
     /// <summary>
     /// A indigo color.
