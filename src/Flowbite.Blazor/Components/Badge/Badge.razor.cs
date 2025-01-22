@@ -20,19 +20,19 @@ public partial class Badge : FlowbiteComponentBase
     private string Tag => Href == null ? "span" : "a";
 
     private string? RenderedBorderClass => new CssBuilder("border")
-       .AddClass(SelectBorderVariant())
+       .AddClass(SelectBorderColor())
        .Build();
 
     private string? RenderedClass => new CssBuilder("font-medium px-2.5 py-0.5")
         .AddClass(RenderedBorderClass, Bordered)
         .AddClass(Class)
-        .AddClass(SelectVariant())
-        .AddClass(SelectSizeVariant())
-        .AddClass(SelectRoundedVariant())
+        .AddClass(SelectColor())
+        .AddClass(SelectSize())
+        .AddClass(SelectRounded())
         .Build();
 
     private string? RenderedCloseClass => new CssBuilder("inline-flex items-center p-1 ms-2 bg-transparent rounded-sm")
-        .AddClass(SelecteCloseVariant())
+        .AddClass(SelecteCloseColor())
         .Build();
 
     #region Parameters
@@ -91,7 +91,7 @@ public partial class Badge : FlowbiteComponentBase
 
     #endregion Fragments
 
-    private string? SelectBorderVariant() => Color switch
+    private string? SelectBorderColor() => Color switch
     {
         Colors.Gray => "border-gray-500",
         Colors.Red => "border-red-500",
@@ -104,7 +104,7 @@ public partial class Badge : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string? SelecteCloseVariant() => Color switch
+    private string? SelecteCloseColor() => Color switch
     {
         Colors.Gray => "text-gray-700 dark:text-gray-800",
         Colors.Red => "text-red-700 dark:text-red-800",
@@ -117,9 +117,9 @@ public partial class Badge : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string? SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
+    private string? SelectRounded() => Rounded ? "rounded-full" : "rounded";
 
-    private string? SelectSizeVariant() => Size switch
+    private string? SelectSize() => Size switch
     {
         Sizes.Small => "text-sm",
         Sizes.Medium => "text-md",
@@ -128,7 +128,7 @@ public partial class Badge : FlowbiteComponentBase
         Sizes.None or Sizes.ExtraSmall or _ => "text-xs",
     };
 
-    private string? SelectVariant() => Color switch
+    private string? SelectColor() => Color switch
     {
         Colors.Gray => "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300",
         Colors.Red => "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",

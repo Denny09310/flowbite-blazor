@@ -20,7 +20,7 @@ public partial class Breadcrumb : FlowbiteComponentBase
     public IList<BreadcrumbItem> Items { get; private set; } = [];
 
     private string? RenderedBorderClass => new CssBuilder("border")
-                    .AddClass(SelectBorderVariant())
+                    .AddClass(SelectBorderColor())
         .Build();
 
     private string? RenderedClass => new CssBuilder("flex")
@@ -30,7 +30,7 @@ public partial class Breadcrumb : FlowbiteComponentBase
 
     private string? RenderFillClass => new CssBuilder("px-5 py-3 rounded-lg")
         .AddClass(RenderedBorderClass)
-        .AddClass(SelectVariant())
+        .AddClass(SelectColor())
         .Build();
 
     #region Parameters
@@ -59,7 +59,7 @@ public partial class Breadcrumb : FlowbiteComponentBase
 
     #endregion Fragments
 
-    private string? SelectBorderVariant() => Color switch
+    private string? SelectBorderColor() => Color switch
     {
         Colors.Gray => "border-gray-500 dark:border-gray-700",
         Colors.Red => "border-red-500 dark:border-red-700",
@@ -72,7 +72,7 @@ public partial class Breadcrumb : FlowbiteComponentBase
         _ => throw new NotImplementedException(),
     };
 
-    private string? SelectVariant() => Color switch
+    private string? SelectColor() => Color switch
     {
         Colors.Gray => "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300",
         Colors.Red => "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",

@@ -26,15 +26,15 @@ public partial class Avatar
     private bool HasTextFragment => Text != null || ChildContent != null;
 
     private string? IndicatorRenderedClass => new CssBuilder("absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full")
-        .AddClass(SelectAnchorVariant())
+        .AddClass(SelectAnchor())
         .Build();
 
     private string? RenderedClass => new CssBuilder()
         .AddClass("ring-2 ring-gray-300 dark:ring-gray-500", Bordered)
         .AddClass("relative overflow-hidden bg-gray-100 dark:bg-gray-600", HasPlaceholder)
         .AddClass("relative inline-flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-600", HasInitials)
-        .AddClass(SelectRoundedVariant())
-        .AddClass(SelectSizeVariant())
+        .AddClass(SelectRounded())
+        .AddClass(SelectSize())
         .Build();
 
     #region Parameters
@@ -111,7 +111,7 @@ public partial class Avatar
 
     #endregion Fragments
 
-    private string? SelectAnchorVariant() => Anchor switch
+    private string? SelectAnchor() => Anchor switch
     {
         Anchors.BottomRight => "bottom-0 right-7",
         Anchors.TopLeft => "top-0 left-7",
@@ -119,9 +119,9 @@ public partial class Avatar
         Anchors.TopRight or _ => "top-0 right-7",
     };
 
-    private string? SelectRoundedVariant() => Rounded ? "rounded-full" : "rounded";
+    private string? SelectRounded() => Rounded ? "rounded-full" : "rounded";
 
-    private string? SelectSizeVariant() => Size switch
+    private string? SelectSize() => Size switch
     {
         Sizes.ExtraSmall => "w-6 h-6",
         Sizes.Small => "w-8 h-8",
