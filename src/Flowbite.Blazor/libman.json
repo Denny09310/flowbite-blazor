@@ -3,7 +3,7 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "flowbite@2.5.2",
+      "library": "flowbite@3.1.2",
       "destination": "wwwroot/lib/flowbite",
       "files": [
         "dist/flowbite.min.js"

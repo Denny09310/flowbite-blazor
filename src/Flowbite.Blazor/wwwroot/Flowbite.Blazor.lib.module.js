@@ -1,1 +1,0 @@
-﻿// I've removed the MutationObserver logic here, as to work correctly with SSR it should be imported before the Blazor script
