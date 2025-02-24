@@ -1,9 +1,9 @@
-@namespace Flowbite.Blazor.Components
+﻿@namespace Flowbite.Blazor.Components
 @inherits FlowbiteComponentBase
 
 <CascadingValue Value="this" IsFixed>
     <nav @attributes="AdditionalAttributes" id="@Id" class="@RenderedClass" style="@Style" aria-label="breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+        <ol class="inline-flex items-center space-x-1 rtl:space-x-reverse md:space-x-2">
             @ChildContent
         </ol>
     </nav>

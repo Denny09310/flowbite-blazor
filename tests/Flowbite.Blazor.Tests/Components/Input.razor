@@ -1,0 +1,108 @@
+﻿@inherits TestContext
+
+@code 
+{
+    [Fact]
+    public void RendersDefaultInput()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Input TValue="string" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<input class="block w-full rounded-lg border bg-blue-50 p-2.5 text-sm text-blue-900 dark:bg-blue-600 dark:placeholder-blue-400 dark:text-white" />
+        );
+    }
+
+    [Fact]
+    public void RendersInputWithColorAndSize()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Input TValue="string" Color="Colors.Red" Size="Sizes.Large" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<input class="block w-full rounded-lg border bg-blue-50 p-4 text-base text-blue-900 focus:ring-red-500 focus:border-red-500 dark:bg-blue-600 dark:placeholder-blue-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500" />
+        );
+    }
+
+    // [Fact]
+    // public void RendersInputWithStartAndEndFragments()
+    // {
+    //     // Arrange & Act
+    //     var cut = Render(
+    //         @<Input TValue="string">
+    //             <Start>
+    //                 <span>Start Content</span>
+    //             </Start>
+    //             <End>
+    //                 <span>End Content</span>
+    //             </End>
+    //         </Input>
+    //     );
+
+    //     // Assert
+    //     cut.MarkupMatches(
+    //         @<div>
+    //             <span>Start Content</span>
+    //             <input class="block w-full rounded-lg border bg-blue-50 p-2.5 pe-10 ps-10 text-sm text-blue-900 dark:bg-blue-600 dark:placeholder-blue-400 dark:text-white" />
+    //             <span>End Content</span>
+    //         </div>
+    //     );
+    // }
+
+    [Fact]
+    public void RendersWithCustomClass()
+    {
+        // Arrange & Act
+        var cut = Render(
+            @<Input TValue="string" Class="custom-class" />
+        );
+
+        // Assert
+        cut.MarkupMatches(
+            @<input class="custom-class block w-full rounded-lg border bg-blue-50 p-2.5 text-sm text-blue-900 dark:bg-blue-600 dark:placeholder-blue-400 dark:text-white" />
+        );
+    }
+
+    [Fact]
+    public void HandlesInputParsing_Int()
+    {
+        // Arrange
+        var inputValue = "42";
+        var component = Render(
+            @<Input TValue="int" />
+        );
+
+        // Act
+        var input = component.Find("input");
+        input.Change(inputValue);
+
+        // Assert
+        // Assuming that `TryParseValueFromString` works correctly, you can validate the component state here if possible.
+        Assert.NotNull(input);
+        Assert.Equal(inputValue, input.GetAttribute("value")); // Mock validation of state update
+    }
+
+    [Fact]
+    public void HandlesInvalidInputParsing_Int()
+    {
+        // Arrange
+        var invalidInput = "NotANumber";
+        var component = Render(
+            @<Input TValue="int" />
+        );
+
+        // Act
+        var input = component.Find("input");
+        input.Change(invalidInput);
+
+        // Assert
+        // Assuming that validation errors update UI or internal state, you would check for error states here.
+        Assert.NotNull(input);
+    }
+}

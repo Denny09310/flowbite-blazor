@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6C83A596-D32D-B35F-00DD-F0C99B673980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowbite.Blazor.Sample", "Flowbite.Blazor.Sample\Flowbite.Blazor.Sample.csproj", "{E7228184-BE0A-4CAA-82DF-9D99133BDF1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,10 @@ Global
 		{DA69C15F-1F72-4068-BDAF-B39D5C256897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA69C15F-1F72-4068-BDAF-B39D5C256897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA69C15F-1F72-4068-BDAF-B39D5C256897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7228184-BE0A-4CAA-82DF-9D99133BDF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7228184-BE0A-4CAA-82DF-9D99133BDF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7228184-BE0A-4CAA-82DF-9D99133BDF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7228184-BE0A-4CAA-82DF-9D99133BDF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +49,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C737BF8C-EF13-45DC-A97D-77BAA50AA88D} = {94B546E7-7A2A-4C95-B79A-9B3F12EC0EB8}
 		{DA69C15F-1F72-4068-BDAF-B39D5C256897} = {1B1A9EE3-B194-4A67-8185-09C02B5159C7}
+		{E7228184-BE0A-4CAA-82DF-9D99133BDF1D} = {6C83A596-D32D-B35F-00DD-F0C99B673980}
 	EndGlobalSection
 EndGlobal

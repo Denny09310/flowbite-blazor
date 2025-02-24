@@ -1,16 +1,16 @@
-@namespace Flowbite.Blazor.Components
+﻿@namespace Flowbite.Blazor.Components
 @inherits FlowbiteComponentBase
 
 @* TODO: Think for a way to pass FlowbiteComponentBase parameters to the HTML *@
 
 <h2 id="@HeadingId">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#@BodyId" aria-expanded="@Expanded" aria-controls="@BodyId">
+    <button type="button" class="flex w-full items-center justify-between gap-3 rounded-t-xl border border-b-0 border-gray-200 p-5 font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-800 dark:hover:bg-gray-800" data-accordion-target="#@BodyId" aria-expanded="@Expanded" aria-controls="@BodyId">
         @Heading
         @Icon
     </button>
 </h2>
 <div id="@BodyId" class="hidden" aria-labelledby="@HeadingId">
-    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+    <div class="border border-b-0 border-gray-200 p-5 dark:border-gray-700 dark:bg-gray-900">
         @Body
     </div>
 </div>

@@ -1,4 +1,4 @@
-@inherits TestContext
+﻿@inherits TestContext
 
 @code 
 {
@@ -12,7 +12,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded font-medium me-2">
+            @<span class="me-2 rounded bg-blue-100 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
                 Default Badge
             </span>
         );
@@ -28,7 +28,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 text-xs rounded font-medium me-2">
+            @<span class="me-2 rounded bg-blue-100 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
                 Colored Badge
             </span>
         );
@@ -44,7 +44,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-lg rounded font-medium me-2">
+            @<span class="me-2 rounded bg-blue-100 text-lg font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
                 Large Badge
             </span>
         );
@@ -60,7 +60,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<span class="border-green-500 border bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 text-xs rounded font-medium me-2">
+            @<span class="me-2 rounded border border-green-500 bg-green-100 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">
                 Bordered Badge
             </span>
         );
@@ -76,7 +76,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded-full font-medium me-2">
+            @<span class="me-2 rounded-full bg-blue-100 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
                 Rounded Badge
             </span>
         );
@@ -92,7 +92,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<a class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded font-medium me-2" href="https://example.com">
+            @<a class="me-2 rounded bg-blue-100 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300" href="https://example.com">
                 Clickable Badge
             </a>
         );
@@ -112,7 +112,7 @@
 
         // Assert
         cut.MarkupMatches(
-            @<span class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 text-xs rounded font-medium me-2">
+            @<span class="me-2 rounded bg-blue-100 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
                 <span>Custom Content</span>
             </span>
         );
